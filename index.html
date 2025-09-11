@@ -2,271 +2,219 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hari Haran — AIML Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hari Haran — AIML Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Fonts & Animation Library -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Raleway:wght@700&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <!-- Styles -->
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #f9f9ff, #e0f7fa);
-      color: #333;
-      scroll-behavior: smooth;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      overflow-x: hidden;
     }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    a:hover { color: #ff5e8a; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-    /* Nav */
+    /* Navbar */
     nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0,0,0,0.4);
       position: fixed;
-      top: 0; left: 0; width: 100%;
-      background: rgba(255, 255, 255, 0.95);
+      width: 100%;
+      z-index: 100;
       backdrop-filter: blur(10px);
-      display: flex; justify-content: center;
-      padding: 15px 0;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      z-index: 1000;
-      font-family: 'Raleway', sans-serif;
     }
-    nav a { margin: 0 20px; font-weight: 600; font-size: 1rem; position: relative; }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0%; height: 2px;
-      bottom: -5px; left: 0;
-      background: #ff5e8a;
+    nav h1 {
+      font-size: 28px;
+      color: #ffd700;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    nav ul li a:hover {
+      color: #ff6f61;
       transition: 0.3s;
     }
-    nav a:hover::after { width: 100%; }
 
-    /* Header */
-    header {
+    /* Hero Section */
+    .hero {
       height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      background: linear-gradient(to bottom right, #dbeafe, #fef3c7);
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(to bottom, rgba(30,60,114,0.8), rgba(42,82,152,0.8)), url('https://source.unsplash.com/1600x900/?technology,ai') center/cover no-repeat;
     }
-    header::before {
-      content: '';
-      position: absolute; width: 200%; height: 200%;
-      background: radial-gradient(circle at 30% 30%, #ff5e8a33, transparent 70%);
-      animation: moveBg 10s linear infinite;
-      top: -50%; left: -50%;
-      z-index: 0;
+    .hero h2 {
+      font-size: 50px;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
+      animation: glow 2s ease-in-out infinite alternate;
     }
-    @keyframes moveBg {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .hero p {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #fff;
+      max-width: 700px;
     }
-    header img {
-      width: 160px; height: 160px;
-      border-radius: 50%; border: 4px solid #4a90e2;
-      margin-bottom: 20px;
-      z-index: 1;
-      animation: float 3s infinite ease-in-out;
-      box-shadow: 0 15px 35px rgba(74, 144, 226, 0.4);
-    }
-    header h1 {
-      font-size: 3rem;
-      color: #4a90e2;
-      font-family: 'Raleway', sans-serif;
-      z-index: 1;
-    }
-    header p {
-      font-size: 1.4rem; color: #555;
-      z-index: 1;
-    }
-
-    @keyframes float {
-      0%,100% { transform: translateY(0);}
-      50% { transform: translateY(-15px);}
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61; }
+      100% { text-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700; }
     }
 
     /* Sections */
-    section { padding: 100px 20px; max-width: 1200px; margin: auto; }
+    section {
+      padding: 100px 50px;
+    }
     section h2 {
-      font-size: 2.5rem; margin-bottom: 40px;
-      text-align: center; color: #4a90e2;
-      font-family: 'Raleway', sans-serif;
-      position: relative;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #ffd700;
+      text-align: center;
     }
-    section h2::after {
-      content: '';
-      width: 80px; height: 3px;
-      background: #ff5e8a;
-      display: block; margin: 10px auto 0;
-      border-radius: 5px;
-    }
-
-    /* Skills */
-    .skills { display: flex; flex-wrap: wrap; justify-content: center; }
-    .skills span {
-      display: inline-block; margin: 10px;
-      padding: 12px 20px; border-radius: 25px;
-      background: linear-gradient(135deg, #4a90e2, #ff5e8a);
-      color: #fff; font-weight: 600; transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .skills span:hover {
-      transform: scale(1.2);
-      background: linear-gradient(135deg, #ff5e8a, #4a90e2);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    section p {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
     }
 
-    /* Cards (Projects / Certificates) */
-    .projects, .certificates { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .card {
-      background: #fff; padding: 25px; border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(74, 144, 226, 0.1);
-      transition: transform 0.5s, box-shadow 0.5s;
-      position: relative; overflow: hidden;
+    /* Projects Grid */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
     }
-    .card:hover {
-      transform: translateY(-15px) rotate(-1deg);
-      box-shadow: 0 20px 40px rgba(74, 144, 226, 0.3);
-    }
-    .card::before {
-      content: '';
-      position: absolute; top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle, #ff5e8a33, transparent 70%);
-      opacity: 0; transition: 0.5s;
-    }
-    .card:hover::before { opacity: 1; }
-
-    .card h3 { font-size: 1.5rem; margin-bottom: 10px; color: #4a90e2; }
-    .card p { color: #555; }
-    .card a {
-      display: inline-block; margin-top: 15px; padding: 10px 18px;
-      background: #ff5e8a; color: #fff; border-radius: 30px; font-weight: 600;
+    .project-card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 15px;
       transition: 0.3s;
+      text-align: center;
+      backdrop-filter: blur(10px);
     }
-    .card a:hover { background: #4a90e2; }
-
-    /* Resume button */
-    .resume-btn {
-      display: block; width: max-content; margin: 20px auto; padding: 15px 30px;
-      background: linear-gradient(135deg, #4a90e2, #ff5e8a);
-      color: #fff; font-weight: bold; border-radius: 40px;
-      box-shadow: 0 10px 25px rgba(74,144,226,0.2); transition: 0.3s;
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px #ff6f61;
     }
-    .resume-btn:hover { background: linear-gradient(135deg, #ff5e8a, #4a90e2); }
+    .project-card h3 {
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+    .project-card p {
+      color: #fff;
+    }
 
     /* Footer */
     footer {
-      text-align: center; padding: 25px;
-      background: linear-gradient(to right, #4a90e2, #ff5e8a);
-      color: #fff; font-weight: 600;
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.5);
+      color: #ffd700;
     }
 
-    /* Media Queries */
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.2rem; }
-      header p { font-size: 1.1rem; }
-      nav a { margin: 0 12px; font-size: 0.9rem; }
+    /* Buttons */
+    .btn {
+      padding: 12px 30px;
+      background: #ff6f61;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #ffd700;
+      color: #000;
     }
   </style>
 </head>
 <body>
+  <!-- Navbar -->
+  <nav data-aos="fade-down">
+    <h1>Hari Haran</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- Navigation -->
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#certificates">Certificates</a>
-  <a href="#resume">Resume</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2 data-aos="fade-up">Hi, I'm Hari Haran</h2>
+    <p data-aos="fade-up" data-aos-delay="200">AIML Enthusiast | Full Stack Developer | Passionate About Building Interactive & AI-Powered Projects</p>
+    <button class="btn" data-aos="fade-up" data-aos-delay="400">Explore My Work</button>
+  </section>
 
-<!-- Header -->
-<header>
-  <img src="hari.jpg" alt="Hari Haran">
-  <h1>Hari Haran</h1>
-  <p>ECE Student | IoT & AI Enthusiast</p>
-</header>
+  <!-- About Section -->
+  <section id="about" data-aos="fade-right">
+    <h2>About Me</h2>
+    <p>
+      I am a passionate AI & ML developer currently pursuing BE in ECE. I love creating intelligent systems, interactive websites, and AI-powered solutions that solve real-world problems. My goal is to build projects that stand out to recruiters and demonstrate innovation.
+    </p>
+  </section>
 
-<!-- About -->
-<section id="about" data-aos="fade-up">
-  <h2>About Me</h2>
-  <p>I am a passionate Electronics and Communication Engineering student with interests in Artificial Intelligence, IoT, and Computer Vision. My goal is to build impactful tech solutions and grow into a full-stack AI-powered developer.</p>
-</section>
-
-<!-- Skills -->
-<section id="skills" data-aos="fade-up">
-  <h2>Skills</h2>
-  <div class="skills">
-    <span>Python</span>
-    <span>C / C++</span>
-    <span>Arduino</span>
-    <span>OpenCV</span>
-    <span>Machine Learning</span>
-    <span>IoT</span>
-    <span>Unity</span>
-    <span>Git & GitHub</span>
-  </div>
-</section>
-
-<!-- Projects -->
-<section id="projects" data-aos="fade-up">
-  <h2>Projects</h2>
-  <div class="projects">
-    <div class="card">
-      <h3>IoT Fire Detection</h3>
-      <p>Image processing + ESP8266 + mobile alerts using Blynk.</p>
-      <a href="#">GitHub</a>
+  <!-- Projects Section -->
+  <section id="projects" data-aos="fade-left">
+    <h2>My Projects</h2>
+    <div class="projects">
+      <div class="project-card" data-aos="zoom-in">
+        <h3>AI Fire Detection</h3>
+        <p>IoT & OpenCV project detecting fire in real-time with alerts to mobile devices.</p>
+      </div>
+      <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+        <h3>Speech-to-Sign Language</h3>
+        <p>Converts spoken words to sign language using computer vision techniques.</p>
+      </div>
+      <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+        <h3>Smart Home Automation</h3>
+        <p>Full home automation with AI assistant, surveillance, and IoT device control.</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Speech-to-Sign Language</h3>
-      <p>Mini project using OpenCV + ML for accessibility.</p>
-      <a href="#">GitHub</a>
-    </div>
-    <div class="card">
-      <h3>Smart Home Automation</h3>
-      <p>IoT-based home security and control with NodeMCU.</p>
-      <a href="#">GitHub</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Certificates -->
-<section id="certificates" data-aos="fade-up">
-  <h2>Certificates</h2>
-  <div class="certificates">
-    <div class="card"><a href="https://github.com/SPIDEY6382/CERTIFICATION">View Certificates on GitHub</a></div>
-  </div>
-</section>
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <p>Reach out to me for collaborations, projects, or just a friendly chat! <br>Email: <a href="mailto:hari@example.com">hari@example.com</a></p>
+  </section>
 
-<!-- Resume -->
-<section id="resume" data-aos="fade-up">
-  <h2>Resume</h2>
-  <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
-</section>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Hari Haran | Designed with ❤️
+  </footer>
 
-<!-- Contact -->
-<section id="contact" data-aos="fade-up">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:harih1371@gmail.com">harih1371@gmail.com</a></p>
-  <p>GitHub: <a href="https://github.com/SPIDEY6382">SPIDEY6382</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/hariharian/">Hari Haran</a></p>
-</section>
-
-<!-- Footer -->
-<footer>
-  © 2025 Hari Haran. All Rights Reserved.
-</footer>
-
-<!-- Animation Script -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 1000, once: true });</script>
-
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
 </body>
 </html>
