@@ -15,84 +15,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #1a1a2e;
-      color: #fff;
-      overflow-x: hidden;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background: #1a1a2e; color: #fff; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
 
     /* Top Bar */
     .topbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+      top: 0; left: 0;
+      width: 100%; height: 60px;
+      display: flex; justify-content: flex-start; align-items: center;
       padding: 0 20px;
       background: rgba(26,26,46,0.9);
       z-index: 1000;
       backdrop-filter: blur(5px);
     }
-    .menu {
-      font-size: 1.5rem;
-      cursor: pointer;
-      position: relative;
-    }
+    .menu { font-size: 1.5rem; cursor: pointer; position: relative; }
     .menu-list {
       display: none;
       position: absolute;
-      top: 40px;
-      left: 0;
-      background: #111126;
-      border-radius: 10px;
-      overflow: hidden;
-      min-width: 150px;
+      top: 40px; left: 0;
+      background: #111126; border-radius: 10px;
+      overflow: hidden; min-width: 150px;
       box-shadow: 0 0 15px #000;
     }
-    .menu-list a {
-      display: block;
-      padding: 10px 15px;
-      border-bottom: 1px solid #222233;
-      transition: background 0.3s;
-    }
+    .menu-list a { display: block; padding: 10px 15px; border-bottom: 1px solid #222233; transition: background 0.3s; }
     .menu-list a:hover { background: #222233; }
     .menu.active .menu-list { display: block; }
 
     /* Hero Section */
     .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-top: 60px; /* for topbar */
-      overflow: hidden;
+      position: relative; height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding-top: 60px; overflow: hidden;
     }
 
-    /* Heading with gradient animation */
+    /* Heading */
     .hero h1 {
-      font-size: 3rem;
-      text-transform: uppercase;
-      font-weight: 700;
+      font-size: 3rem; text-transform: uppercase; font-weight: 700;
       background: linear-gradient(45deg, #00fff7, #ff6fff, #a259ff);
       background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradient 5s ease infinite;
-      margin-bottom: 20px;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: gradient 5s ease infinite; margin-bottom: 20px;
     }
     @keyframes gradient {
       0% { background-position: 0% 50%; }
@@ -102,30 +67,19 @@
 
     /* Profile Image */
     .hero img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 4px solid #00fff7;
-      box-shadow: 0 0 20px rgba(0,255,247,0.7);
-      margin-bottom: 20px;
-      transition: transform 0.5s;
+      width: 180px; height: 180px; border-radius: 50%;
+      border: 4px solid #00fff7; box-shadow: 0 0 20px rgba(0,255,247,0.7);
+      margin-bottom: 20px; transition: transform 0.5s;
     }
     .hero img:hover { transform: scale(1.1) rotate(5deg); }
 
-    /* Resume Button fixed at bottom */
+    /* Resume Button at bottom */
     .bottom-btn {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 12px 30px;
-      border-radius: 25px;
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      padding: 12px 30px; border-radius: 25px;
       background: linear-gradient(45deg, #00fff7, #ff6fff);
-      font-weight: bold;
-      color: #fff;
-      display: inline-block;
-      transition: all 0.3s;
-      z-index: 1000;
+      font-weight: bold; color: #fff; display: inline-block;
+      transition: all 0.3s; z-index: 1000;
     }
     .bottom-btn:hover {
       box-shadow: 0 0 20px #ff6fff, 0 0 40px #00fff7;
@@ -134,21 +88,12 @@
 
     /* Floating Symbols */
     .background-symbols {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0; overflow: hidden;
     }
     .symbol {
-      position: absolute;
-      font-size: 2rem;
-      opacity: 0.1;
-      animation: float 20s linear infinite;
-      color: #fff;
+      position: absolute; font-size: 2rem; opacity: 0.1;
+      animation: float 20s linear infinite; color: #fff;
     }
     @keyframes float {
       0% { transform: translateY(100vh) rotate(0deg); }
@@ -156,53 +101,32 @@
     }
 
     /* Sections */
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+    section { padding: 80px 20px; max-width: 1200px; margin: auto; }
     h2 {
-      font-size: 2rem;
-      margin-bottom: 40px;
+      font-size: 2rem; margin-bottom: 40px;
       background: linear-gradient(45deg, #00fff7, #ff6fff, #a259ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
-      text-align: center;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-transform: uppercase; text-align: center;
     }
 
     /* Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
     .card {
-      background: #111126;
-      padding: 30px 20px;
-      border-radius: 15px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: #111126; padding: 30px 20px; border-radius: 15px;
+      text-align: center; transition: transform 0.3s, box-shadow 0.3s;
     }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 30px #ff6fff;
-    }
-    .card i {
-      font-size: 3rem;
-      color: #00fff7;
-      margin-bottom: 15px;
-    }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 0 30px #ff6fff; }
+    .card i { font-size: 3rem; color: #00fff7; margin-bottom: 15px; }
     .card h3 { font-size: 1.5rem; margin-bottom: 10px; }
     .card p { font-size: 1rem; color: #ccc; }
 
+    /* Contact */
+    .contact-info { text-align: center; color: #ccc; font-size: 1.2rem; line-height: 2; }
+    .contact-info a { color: #00fff7; transition: color 0.3s; }
+    .contact-info a:hover { color: #ff6fff; }
+
     /* Footer */
-    footer {
-      padding: 40px 20px;
-      text-align: center;
-      background: #111126;
-      color: #aaa;
-    }
+    footer { padding: 40px 20px; text-align: center; background: #111126; color: #aaa; }
   </style>
 </head>
 <body>
@@ -230,13 +154,12 @@
       <i class="fas fa-brain symbol" style="top:60%; left:50%; animation-duration:32s;"></i>
     </div>
 
-    <!-- Heading -->
     <h1>R. HARI HARAN</h1>
 
     <!-- Profile Image -->
-    <img src="profile.JPG" alt="Hari Haran">
+    <img src="https://raw.githubusercontent.com/your-username/portfolio/main/profile.jpg" alt="Hari Haran">
 
-    <!-- Resume Button fixed at bottom -->
+    <!-- Resume Button -->
     <a href="HARI HARAN RESUME.pdf" class="bottom-btn" download>HARI HARAN RESUME</a>
   </div>
 
@@ -256,19 +179,16 @@
         <i class="fas fa-robot"></i>
         <h3>AI Chatbot</h3>
         <p>Developed a conversational AI assistant using Python & OpenAI APIs.</p>
-        <a href="#" class="resume-btn">View Project</a>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="100">
         <i class="fas fa-code"></i>
         <h3>Portfolio Website</h3>
         <p>Designed a professional, interactive student portfolio with animations and tech-themed background.</p>
-        <a href="#" class="resume-btn">View Project</a>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="200">
         <i class="fas fa-laptop"></i>
         <h3>IoT Fire Detection</h3>
         <p>Implemented a smart fire detection system using NodeMCU, OpenCV, and mobile alerts.</p>
-        <a href="#" class="resume-btn">View Project</a>
       </div>
     </div>
   </section>
@@ -295,8 +215,18 @@
     </div>
   </section>
 
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <p><i class="fas fa-phone"></i> <a href="tel:+919876543210">+91 98765 43210</a></p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:hariharan@example.com">hariharan@example.com</a></p>
+      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a></p>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer id="contact">
+  <footer>
     &copy; 2025 R. HARI HARAN. All Rights Reserved.
   </footer>
 
@@ -304,12 +234,8 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
-
     const menu = document.querySelector('.menu');
-    menu.addEventListener('click', () => {
-      menu.classList.toggle('active');
-    });
+    menu.addEventListener('click', () => { menu.classList.toggle('active'); });
   </script>
 </body>
 </html>
-
