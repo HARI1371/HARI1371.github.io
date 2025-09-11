@@ -1,220 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hari Haran — AIML Portfolio</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hari Haran — AIML Portfolio</title>
 
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <!-- Styles -->
-  <style>
-    /* Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
-      overflow-x: hidden;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+<!-- AOS Animations -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    /* Navbar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-      background: rgba(0,0,0,0.4);
-      position: fixed;
-      width: 100%;
-      z-index: 100;
-      backdrop-filter: blur(10px);
-    }
-    nav h1 {
-      font-size: 28px;
-      color: #ffd700;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-    nav ul li a:hover {
-      color: #ff6f61;
-      transition: 0.3s;
-    }
+<style>
+/* Base Styles */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif;}
+body { background: #0b0c10; color: #fff; overflow-x:hidden; }
 
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(to bottom, rgba(30,60,114,0.8), rgba(42,82,152,0.8)), url('https://source.unsplash.com/1600x900/?technology,ai') center/cover no-repeat;
-    }
-    .hero h2 {
-      font-size: 50px;
-      color: #ffd700;
-      text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    .hero p {
-      font-size: 20px;
-      margin-top: 20px;
-      color: #fff;
-      max-width: 700px;
-    }
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61; }
-      100% { text-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700; }
-    }
+/* Hamburger Menu */
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  cursor: pointer;
+}
+.menu-btn div {
+  width: 35px;
+  height: 5px;
+  background-color: #00ffff;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+.nav-active {
+  left: 0;
+}
+nav {
+  position: fixed;
+  top:0; left:-250px;
+  width: 250px;
+  height: 100%;
+  background: #1f1f2e;
+  padding: 80px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  transition: 0.5s;
+}
+nav a { color:#00ffff; font-size:18px; transition:0.3s;}
+nav a:hover { color:#a259ff; transform:translateX(10px);}
 
-    /* Sections */
-    section {
-      padding: 100px 50px;
-    }
-    section h2 {
-      font-size: 36px;
-      margin-bottom: 40px;
-      color: #ffd700;
-      text-align: center;
-    }
-    section p {
-      font-size: 18px;
-      line-height: 1.8;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
+/* Hero Section */
+.hero {
+  height:100vh;
+  display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+  background: linear-gradient(to bottom right, #1f1f2e, #3a0ca3);
+}
+.hero h1 {
+  font-size:55px;
+  background: linear-gradient(90deg, #00ffff, #a259ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+.hero p { font-size:22px; margin-top:20px; max-width:700px; }
+.hero img { width:150px; border-radius:50%; margin-top:30px; border:3px solid #00ffff; }
 
-    /* Projects Grid */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-    .project-card {
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 15px;
-      transition: 0.3s;
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 20px #ff6f61;
-    }
-    .project-card h3 {
-      margin-bottom: 15px;
-      color: #ffd700;
-    }
-    .project-card p {
-      color: #fff;
-    }
+/* Glow Animation */
+@keyframes glow {
+  0% { text-shadow:0 0 10px #00ffff,0 0 20px #a259ff;}
+  100% { text-shadow:0 0 20px #00ffff,0 0 40px #a259ff;}
+}
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: rgba(0,0,0,0.5);
-      color: #ffd700;
-    }
+/* Sections */
+section { padding:100px 50px; }
+section h2 { font-size:38px; text-align:center; margin-bottom:50px; background: linear-gradient(to right, #00ffff, #a259ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+section p { font-size:18px; max-width:900px; margin:auto; line-height:1.8; }
 
-    /* Buttons */
-    .btn {
-      padding: 12px 30px;
-      background: #ff6f61;
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #ffd700;
-      color: #000;
-    }
-  </style>
+/* Grid Layouts */
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
+.card {
+  background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius:15px; padding:20px;
+  transition:0.4s; text-align:center; position:relative;
+}
+.card:hover { transform:translateY(-10px) scale(1.05); box-shadow:0 0 20px #00ffff,0 0 30px #a259ff; }
+.card img { width:60px; margin-bottom:15px; }
+.card h3 { margin-bottom:10px; color:#a259ff; }
+.card p { color:#fff; }
+
+/* Skills & Tools */
+.skills { display:flex; justify-content:center; flex-wrap:wrap; gap:25px; }
+.skill { background: #1f1f2e; padding:15px 25px; border-radius:50px; transition:0.3s; }
+.skill:hover { background:#00ffff; color:#000; transform:scale(1.1); }
+
+/* Footer */
+footer { text-align:center; padding:30px; background:#111; color:#00ffff; }
+
+/* Animations */
+@keyframes rotateCard { 0% { transform:rotateY(0deg); } 100% { transform:rotateY(360deg); } }
+.card-rotate { animation:rotateCard 6s linear infinite; }
+
+/* Buttons */
+.btn { padding:12px 30px; background:#a259ff; color:#fff; border:none; border-radius:50px; cursor:pointer; transition:0.3s; }
+.btn:hover { background:#00ffff; color:#000; transform:scale(1.05); }
+
+/* Responsive */
+@media(max-width:768px){ nav { width:200px; } .hero h1 { font-size:38px; } }
+</style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav data-aos="fade-down">
-    <h1>Hari Haran</h1>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h2 data-aos="fade-up">Hi, I'm Hari Haran</h2>
-    <p data-aos="fade-up" data-aos-delay="200">AIML Enthusiast | Full Stack Developer | Passionate About Building Interactive & AI-Powered Projects</p>
-    <button class="btn" data-aos="fade-up" data-aos-delay="400">Explore My Work</button>
-  </section>
+<!-- Hamburger Menu -->
+<div class="menu-btn" onclick="toggleMenu()">
+  <div></div><div></div><div></div>
+</div>
+<nav id="sidebar">
+  <a href="#about">About Me</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <!-- About Section -->
-  <section id="about" data-aos="fade-right">
-    <h2>About Me</h2>
-    <p>
-      I am a passionate AI & ML developer currently pursuing BE in ECE. I love creating intelligent systems, interactive websites, and AI-powered solutions that solve real-world problems. My goal is to build projects that stand out to recruiters and demonstrate innovation.
-    </p>
-  </section>
+<!-- Hero -->
+<section class="hero">
+  <h1 data-aos="fade-down">Hari Haran</h1>
+  <p data-aos="fade-up" data-aos-delay="200">AIML Enthusiast | Full Stack Developer | Building Interactive AI Projects</p>
+  <img src="https://source.unsplash.com/150x150/?portrait" data-aos="zoom-in" data-aos-delay="400" alt="Hari Haran">
+  <button class="btn" data-aos="fade-up" data-aos-delay="600">Explore My Work</button>
+</section>
 
-  <!-- Projects Section -->
-  <section id="projects" data-aos="fade-left">
-    <h2>My Projects</h2>
-    <div class="projects">
-      <div class="project-card" data-aos="zoom-in">
-        <h3>AI Fire Detection</h3>
-        <p>IoT & OpenCV project detecting fire in real-time with alerts to mobile devices.</p>
-      </div>
-      <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
-        <h3>Speech-to-Sign Language</h3>
-        <p>Converts spoken words to sign language using computer vision techniques.</p>
-      </div>
-      <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
-        <h3>Smart Home Automation</h3>
-        <p>Full home automation with AI assistant, surveillance, and IoT device control.</p>
-      </div>
+<!-- About -->
+<section id="about" data-aos="fade-right">
+  <h2>About Me</h2>
+  <p>
+    I am a passionate AI & ML developer pursuing BE in ECE. I love creating intelligent systems, interactive websites, and AI-powered solutions that solve real-world problems. I focus on building projects that visually communicate their purpose instantly to recruiters.
+  </p>
+</section>
+
+<!-- Projects -->
+<section id="projects" data-aos="fade-left">
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card" data-aos="zoom-in">
+      <img src="https://img.icons8.com/fluency/96/fire-element.png"/>
+      <h3>AI Fire Detection</h3>
+      <p>Real-time fire detection using OpenCV and IoT alerts to mobile devices.</p>
     </div>
-  </section>
+    <div class="card card-rotate" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://img.icons8.com/fluency/96/sign-language.png"/>
+      <h3>Speech-to-Sign Language</h3>
+      <p>Converts spoken words into sign language with computer vision.</p>
+    </div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="200">
+      <img src="https://img.icons8.com/fluency/96/smart-home.png"/>
+      <h3>Smart Home Automation</h3>
+      <p>Control home devices with AI assistant, IoT, and smart automation.</p>
+    </div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="300">
+      <img src="https://img.icons8.com/fluency/96/robot.png"/>
+      <h3>AI Chatbot</h3>
+      <p>Interactive chatbot for queries with NLP and AI capabilities.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <p>Reach out to me for collaborations, projects, or just a friendly chat! <br>Email: <a href="mailto:hari@example.com">hari@example.com</a></p>
-  </section>
+<!-- Skills -->
+<section id="skills" data-aos="fade-up">
+  <h2>Skills & Tools</h2>
+  <div class="skills">
+    <div class="skill" data-aos="flip-left">Python</div>
+    <div class="skill" data-aos="flip-left" data-aos-delay="100">OpenCV</div>
+    <div class="skill" data-aos="flip-left" data-aos-delay="200">Node.js</div>
+    <div class="skill" data-aos="flip-left" data-aos-delay="300">React.js</div>
+    <div class="skill" data-aos="flip-left" data-aos-delay="400">Arduino/IoT</div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Hari Haran | Designed with ❤️
-  </footer>
+<!-- Contact -->
+<section id="contact" data-aos="fade-up">
+  <h2>Contact Me</h2>
+  <p>Email: <a href="mailto:hari@example.com">hari@example.com</a> | Phone: +91 1234567890</p>
+</section>
 
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
+<!-- Footer -->
+<footer>
+  &copy; 2025 Hari Haran | Designed with ❤️
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration:1000, once:true });
+
+  function toggleMenu() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('nav-active');
+  }
+</script>
 </body>
 </html>
