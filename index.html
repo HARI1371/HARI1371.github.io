@@ -2,88 +2,231 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HARI HARAN . R — Portfolio</title>
+  <title>Hari Haran — Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; line-height: 1.6; }
-    header { text-align: center; margin-bottom: 40px; }
-    img.profile { width: 150px; border-radius: 50%; }
-    section { margin-bottom: 40px; }
-    h2 { border-bottom: 2px solid #ddd; padding-bottom: 10px; }
-    .projects, .certificates { list-style: none; padding: 0; }
-    .projects li, .certificates li { margin-bottom: 20px; }
-    .skills { display: flex; flex-wrap: wrap; }
-    .skills span { background: #f0f0f0; padding: 5px 10px; margin: 5px; border-radius: 5px; }
-    a { color: #0066cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    footer { text-align: center; margin-top: 60px; font-size: 0.9em; color: #555; }
+    /* Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0f1c;
+      color: #e4e4e4;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a { color: #00d4ff; text-decoration: none; transition: 0.3s; }
+    a:hover { color: #ff0077; }
+
+    /* Header */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom right, #0a0f1c, #141e30);
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #00d4ff;
+      margin-bottom: 20px;
+      animation: float 3s infinite ease-in-out;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #00d4ff;
+    }
+    header p { font-size: 1.2rem; color: #ccc; }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: rgba(10, 15, 28, 0.9);
+      display: flex; justify-content: center;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 15px;
+      font-weight: 500;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeInUp 1.2s ease;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #00d4ff;
+    }
+
+    /* Skills */
+    .skills span {
+      display: inline-block;
+      background: #1b2236;
+      padding: 8px 15px;
+      margin: 8px;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+    .skills span:hover {
+      transform: scale(1.1);
+      background: #00d4ff;
+      color: #0a0f1c;
+    }
+
+    /* Projects */
+    .projects, .certificates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #1b2236;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 212, 255, 0.4);
+    }
+
+    /* Resume Button */
+    .resume-btn {
+      display: block;
+      width: max-content;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #00d4ff;
+      color: #0a0f1c;
+      font-weight: bold;
+      border-radius: 25px;
+      transition: background 0.3s;
+    }
+    .resume-btn:hover {
+      background: #ff0077;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0a0f1c;
+      color: #aaa;
+      margin-top: 40px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes fadeInUp { from {opacity:0; transform: translateY(30px);} to {opacity:1; transform: translateY(0);} }
+    @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
   </style>
 </head>
 <body>
 
+<!-- Navigation -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#resume">Resume</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- Header -->
 <header>
-  <img class="profile" src="hari.jpg" alt="Hari Haran.R">
-  <h1>Hari Haran .R</h1>
-  <p>ECE Student | AI & IoT Enthusiast</p>
+  <img src="me.jpg" alt="Hari Haran">
+  <h1>Hari Haran</h1>
+  <p>ECE Student | IoT & AI Enthusiast</p>
 </header>
 
+<!-- About -->
 <section id="about">
   <h2>About Me</h2>
-  <p>Brief about your education, what you like doing, what you want to achieve.</p>
+  <p>I am a passionate Electronics and Communication Engineering student with interests in Artificial Intelligence, IoT, and Computer Vision. My goal is to build impactful tech solutions and grow into a full-stack AI-powered developer.</p>
 </section>
 
+<!-- Skills -->
 <section id="skills">
   <h2>Skills</h2>
   <div class="skills">
     <span>Python</span>
     <span>C / C++</span>
-    <span>Machine Learning</span>
-    <span>TensorFlow</span>
     <span>Arduino</span>
+    <span>OpenCV</span>
+    <span>Machine Learning</span>
     <span>IoT</span>
+    <span>Unity</span>
     <span>Git & GitHub</span>
   </div>
 </section>
 
+<!-- Projects -->
 <section id="projects">
   <h2>Projects</h2>
-  <ul class="projects">
-    <li>
-      <strong>Project 1 Name</strong> — short description. <a href="link-to-github">GitHub</a> | <a href="link-to-live">Live Demo</a>
-    </li>
-    <li>
-      <strong>Project 2 Name</strong> — description. <a href="#">GitHub</a> | <a href="#">Live Demo</a>
-    </li>
-    <!-- Add more -->
-  </ul>
+  <div class="projects">
+    <div class="card">
+      <h3>IoT Fire Detection</h3>
+      <p>Image processing + ESP8266 + mobile alerts using Blynk.</p>
+      <a href="#">GitHub</a>
+    </div>
+    <div class="card">
+      <h3>Speech-to-Sign Language</h3>
+      <p>Mini project using OpenCV + ML for accessibility.</p>
+      <a href="#">GitHub</a>
+    </div>
+    <div class="card">
+      <h3>Smart Home Automation</h3>
+      <p>IoT-based home security and control with NodeMCU.</p>
+      <a href="#">GitHub</a>
+    </div>
+  </div>
 </section>
 
+<!-- Certificates -->
 <section id="certificates">
   <h2>Certificates</h2>
-  <ul class="certificates">
-    <li><a href="link-to-pdf">HARI AI Intern by Novi Tech</a></li>
-    <li><a href="link-to-pdf">HARI AI Master Class by Novi Tech</a></li>
-    <li><a href="link-to-pdf">HARI Python Basic by Uniathenna</a></li>
-    <!-- And so on -->
-  </ul>
+  <div class="certificates">
+    <div class="card"><a href="https://github.com/SPIDEY6382/CERTIFICATION">View Certificates on GitHub</a></div>
+  </div>
 </section>
 
+<!-- Resume -->
 <section id="resume">
   <h2>Resume</h2>
-  <a href="resume.pdf" download>Download My Resume (PDF)</a>
+  <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
 </section>
 
+<!-- Contact -->
 <section id="contact">
   <h2>Contact</h2>
   <p>Email: your-email@example.com</p>
   <p>GitHub: <a href="https://github.com/SPIDEY6382">SPIDEY6382</a></p>
-  <p>LinkedIn: <a href="your-linkedin-url">Your Name</a></p>
+  <p>LinkedIn: <a href="#">Your LinkedIn</a></p>
 </section>
 
+<!-- Footer -->
 <footer>
-  &copy; 2025 Your Name
+  © 2025 Hari Haran. All Rights Reserved.
 </footer>
 
 </body>
 </html>
-
